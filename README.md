@@ -15,8 +15,8 @@ This repository contains an automated installation script for ERPNext, designed 
 
 1. Clone the repository:
 ```bash
-   git clone https://github.com/aenigma-lab/erpnext-installation-script.git
-   cd erpnext-installation-script
+   git clone https://github.com/aenigma-lab/erpnext-installer.git
+   cd erpnext-installer
 ```
 2. Give Executable permission to repository:
 ```bash
