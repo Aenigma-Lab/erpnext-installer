@@ -24,4 +24,4 @@ This repository contains an automated installation script for ERPNext, designed 
 ```
 3. Execute file:
 ```bash
-   ./erpnext-installer.sh
+   ./erpnext-installer-v2.sh
