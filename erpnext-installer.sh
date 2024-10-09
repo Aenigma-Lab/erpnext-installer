@@ -388,8 +388,9 @@ while true; do
         while true; do
             OPEN_TERMINALS=$(count_open_terminals)
             if [ "$OPEN_TERMINALS" -gt 1 ]; then
-                echo -e "\e[1;31mMore than one terminal is open after site creation. Please close any additional terminals.\e[0m"
-                sleep 5  # Wait before checking again
+                
+                sleep 10  # Wait before checking again
+                echo -e "\e[1;31mMore than one terminal is open. Press CTRL+C to close bench running terminal.\e[0m"
             else
                 echo -e "\e[1;32mOnly one terminal is open. Continuing...\e[0m"
                 break  # Exit the loop if one terminal is open
