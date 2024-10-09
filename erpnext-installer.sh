@@ -531,6 +531,9 @@ case "$continue_prod" in
     echo -e "${GREEN}Done!"
     sleep 5
 
+     # Open a new terminal to forcefully reboot
+    gnome-terminal -- bash -c "echo 'Forcefully rebooting...'; sudo reboot"
+
     echo -e "${GREEN}-----------------------------------------------------------------------------------------------"
     echo -e "Congratulations! You have successfully installed Frappe and ERPNext $version_choice Development Environment."
     echo -e "Start your instance by running bench start to start your server and visiting http://$server_ip:8000"
