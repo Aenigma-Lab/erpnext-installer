@@ -396,7 +396,7 @@ execute_command "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/i
 execute_command "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash" "npm bash failed to add" "npm bash added"
 execute_command "source ~/.bashrc" "failed to add bash nvm" "added to bash successfull"
 execute_command "nvm list-remote" "failed to showing list of nvm" "All list of NVm."
-execute_command "nvm install v20.17.0" "failed to installing nvm" "Successfully install nvm"
+execute_command "nvm install v22.14.0" "failed to installing nvm" "Successfully install nvm"
 #execute_command "nvm install 18" "NVM failed to install Node.js 18." "Node.js 18 installed successfully using NVM."
 
 # Use the function to install npm
