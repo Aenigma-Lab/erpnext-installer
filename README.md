@@ -49,7 +49,7 @@ A streamlined, automated installation script for ERPNext on **Ubuntu 24.xx**. Th
 ```bash
 ./erpnext-installer.sh
 ```
-4. ##License 📜
+ ##License 📜
    
 This project is licensed under the MIT License. You’re free to modify and distribute this software as per the license conditions.
 
