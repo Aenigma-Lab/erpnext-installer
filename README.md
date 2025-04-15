@@ -8,8 +8,6 @@ A streamlined, automated installation script for ERPNext on **Ubuntu 24.xx**. Th
 1. [Features](#features)
 2. [Requirements](#requirements)
 3. [Usage](#usage)
-4. [Troubleshooting](#troubleshooting)
-5. [Contributing](#contributing)
 6. [License](#license)
 
 ---
@@ -25,7 +23,7 @@ A streamlined, automated installation script for ERPNext on **Ubuntu 24.xx**. Th
 
 ---
 
-## Requirements ✅
+## Requirements ✅ <a name="requirements"></a>
 
 - **Operating System**: Ubuntu 24.xx  
 - **Non-Root User**: You should be logged in as a user with `sudo` privileges.
@@ -37,7 +35,7 @@ A streamlined, automated installation script for ERPNext on **Ubuntu 24.xx**. Th
 
 ---
 
-## Usage 📖
+## Usage 📖 <a name="usage"></a>
 
 1. **Clone the repository**:
    ```bash
@@ -51,6 +49,6 @@ A streamlined, automated installation script for ERPNext on **Ubuntu 24.xx**. Th
 ```bash
 ./erpnext-installer.sh
 ```
-## License 📜
+## License 📜 <a name="license"></a>
 • This project is licensed under the MIT License. You’re free to modify and distribute this software as per the license conditions.
 
