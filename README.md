@@ -14,7 +14,8 @@ A streamlined, automated installation script for ERPNext on **Ubuntu 24.xx**. Th
 
 ---
 
-## Features ✨ <a id="features-emoji"></a>
+## Features ✨ <a name="features"></a>
+
 
 
 - **One-Line Installation**: Simplifies setting up ERPNext by automating the entire process.
