@@ -22,7 +22,7 @@ check_ubuntu_version() {
         print_red "You need to upgrade your Ubuntu version to at least 22.x.x LTS."
         print_red "Current version: $full_version (Codename: $codename)"
         exit 1  # Terminate the script if the version check fails
-    elif (( $(echo "$version > 22" && "$version < 23" | bc -l) )); then
+    elif (( $(echo "$version > 23" && "$version < 24" | bc -l) )); then
         print_green "You are eligible to install ERPNext Version 15."
         print_green "Current version: $full_version"
     elif (( $(echo "$version > 23" | bc -l) )); then
