@@ -409,7 +409,7 @@ execute_command "sudo npm install -g yarn" "Failed to install Yarn." "Yarn insta
 execute_command "sudo apt-get install -y xvfb libfontconfig wkhtmltopdf" "Failed to install wkhtmltopdf." "wkhtmltopdf installed successfully."
 
 # Use the function to install Frappe Bench
-execute_command "sudo -H pip3 install frappe-bench" "Failed to install Frappe Bench." "Frappe Bench installed successfully."
+execute_command "sudo -H pip3 install frappe-bench --break-system-packages" "Failed to install Frappe Bench." "Frappe Bench installed successfully."
 
 # Check the current version of Bench
 execute_command "bench --version" "Failed to get the current version of Bench." "The current version of Bench is displayed above."
