@@ -12,26 +12,19 @@ print_green() {
 
 # Check Ubuntu version
 check_ubuntu_version() {
-    # Get the current Ubuntu version details
     version=$(lsb_release -rs)
     codename=$(lsb_release -cs)
-    full_version=$(lsb_release -a 2>/dev/null | grep 'Description' | cut -d':' -f2 | sed 's/^ //')
+    full_version=$(lsb_release -d | cut -f2)
 
-    # Check the version
-    if (( $(echo "$version < 22" | bc -l) )); then
-        print_red "You need to upgrade your Ubuntu version to at least 22.x.x LTS."
-        print_red "Current version: $full_version (Codename: $codename)"
-        exit 1  # Terminate the script if the version check fails
-    elif (( $(echo "$version > 23" && "$version < 24" | bc -l) )); then
-        print_green "You are eligible to install ERPNext Version 15."
-        print_green "Current version: $full_version"
-    elif (( $(echo "$version > 23" | bc -l) )); then
-        print_red "You should consider downgrading your Ubuntu version to 22.x.x LTS for compatibility."
-        print_red "Current version: $full_version (Codename: $codename)"
-        exit 1  # Terminate the script if the version check fails
+    # Extract major version (e.g., 24 from 24.04)
+    major_version=$(echo "$version" | cut -d'.' -f1)
+
+    if [[ "$major_version" == "24" ]]; then
+        print_green "✅ Supported Ubuntu version detected: $full_version"
     else
-        print_green "You are eligible to install ERPNext Version 15."
-        print_green "Current version: $full_version"
+        print_red "❌ Only Ubuntu 24.x is supported for this ERPNext setup."
+        print_red "Your current version is: $full_version (Codename: $codename)"
+        exit 1
     fi
 }
 
@@ -165,14 +158,14 @@ execute_command "sudo apt upgrade -y" "Failed to upgrade packages" "Upgrade comm
 #Curl install
 execute_command "sudo apt-get install curl -y" "Failed to install Curl" "Curl command executed Successfully"
 
-# Install Python 3.11
-execute_command "sudo apt install -y python3.11" "Failed to install Python 3.11" "Python 3.11 installed successfully"
+# Install Python 3.12
+execute_command "sudo apt install -y python3.12" "Failed to install Python 3.12" "Python 3.12 installed successfully"
 
-# Check Python 3.11 version
-execute_command "python3.11 --version" "Failed to check Python 3.11 version" "Python version checked"
+# Check Python 3.12 version
+execute_command "python3.12 --version" "Failed to check Python 3.12 version" "Python version checked"
 
-# Install full Python 3.11 package
-execute_command "sudo apt install -y python3.11-full" "Failed to install full Python 3.11 package" "Full Python 3.11 package installed successfully"
+# Install full Python 3.12 package
+execute_command "sudo apt install -y python3.12-full" "Failed to install full Python 3.12 package" "Full Python 3.12 package installed successfully"
 
 # Install Git
 execute_command "sudo apt-get install -y git" "Failed to install Git" "Git installed successfully"
@@ -183,8 +176,8 @@ execute_command "sudo apt-get install -y python3-dev" "Failed to install Python 
 # Install setuptools and pip
 execute_command "sudo apt-get install -y python3-setuptools python3-pip" "Failed to install setuptools and pip" "Setuptools and pip installed successfully"
 
-# Install Python 3.11 venv
-execute_command "sudo apt install -y python3.10-venv" "Failed to install Python 3.11 venv" "Python 3.10 venv installed successfully"
+# Install Python 3.12 venv
+execute_command "sudo apt install -y python3.12-venv" "Failed to install Python 3.12 venv" "Python 3.10 venv installed successfully"
 
 # Install software-properties-common
 execute_command "sudo apt-get install -y software-properties-common" "Failed to install software-properties-common" "Software-properties-common installed successfully"
@@ -446,7 +439,7 @@ if [[ -d "$BASE_DIR" ]]; then
 fi
 
 # Run bench init with the user-defined directory
-bench_init_create_command "bench init $BASE_DIR --frappe-branch version-15" "Failed to initialize the bench" "Bench initialized successfully."
+bench_init_create_command " bench init $BASE_DIR --frappe-branch version-15"  "Bench initialized successfully." "Failed to initialize the bench"
 
 # Change directory to the new bench
 cd "$BASE_DIR" || { echo -e "\e[1;31mFailed to change the directory to $BASE_DIR\e[0m"; exit 1; }
@@ -477,8 +470,7 @@ fi
 echo -e "\e[1;32mBench initialized successfully in $BASE_DIR. You can continue working in the new terminal.\e[0m"
 
 #-------------------------------------------------------------------------------------------------------------------------
-# Ask the user if they want to delete the site
-#!/bin/bash
+
 
 # Function to run a command and handle success or failure messages
 site_command() {
@@ -647,4 +639,3 @@ echo -e "${border_color}|${reset_format}${background_color}${text_color}${messag
 
 # Print the bottom border
 echo -e "${border_color}+${border_line// /-}+${reset_format}"
-
