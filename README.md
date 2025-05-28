@@ -93,7 +93,7 @@ Do you manage **multiple custom apps**? This script lets you install and link th
 
     ✅ MariaDB 10.6 / 10.11
 
-## 👤 Author
+## 👤 Author <a name = "author"></a>
 
 **Shubham Mishra**  
 [GitHub: @Aenigma-Lab](https://github.com/Aenigma-Lab)
