@@ -5,17 +5,16 @@ A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.
 ---
 
 ## 📚 Table of Contents
-
-1. ✨ [Features](#-features)
+1. ✨ [Features](#features)
 2. ✅ [Requirements](#requirements)
 3. 📖 [Usage](#usage)
 4. 🧩 [ERPNext Multi-App Installer](#erpnext-multi-app-installer)
 5. 📜 [License](#license)
+6. 👤 [Author](#author)
 
 ---
 
-## ✨ Features  <a name="features"></a>
-<h2 id="features">✨ Features</h2>
+## ✨ Features <a name="features"></a>
 
 - ⚡ **One-Line Installation**  
   Fully automated setup of ERPNext and its dependencies.
@@ -34,7 +33,7 @@ A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.
 
 ---
 
-## ✅ Requirements  <a name="requirements"></a>
+## ✅ Requirements <a name="requirements"></a>
 
 - 🐧 **Operating System**: Ubuntu 24.xx LTS OR Ubuntu 22.xx LTS
 - 👤 **Non-Root User**: You must use a sudo-enabled user (not root)
@@ -54,7 +53,7 @@ A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.
 ```
 ---
 
-## 📖 Usage  <a name="usage"></a>
+## 📖 Usage <a name="usage"></a>
 ```bash
 1. **Clone the repository**:
    
@@ -83,7 +82,7 @@ Do you manage **multiple custom apps**? This script lets you install and link th
 > ./erpnext_app_installation_script.sh
 ```
 
-## 📜 License  <a name="license"></a>
+## 📜 License <a name="license"></a>
 • This project is licensed under the MIT License. You’re free to modify and distribute this software as per the license conditions.
 
 ## 🧪 Tested On
