@@ -6,11 +6,11 @@ A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.
 
 ## 📚 Table of Contents
 
-1. ✨ [Features](#-features)
-2. ✅ [Requirements](#-requirements)
-3. 📖 [Usage](#-usage)
-4. 🧩 [ERPNext Multi-App Installer](#-erpnext-multi-app-installer)
-5. 📜 [License](#-license)
+1. ✨ [Features](features)
+2. ✅ [Requirements](#requirements)
+3. 📖 [Usage](#usage)
+4. 🧩 [ERPNext Multi-App Installer](#erpnext-multi-app-installer)
+5. 📜 [License](#license)
 
 ---
 
@@ -40,14 +40,14 @@ A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.
 
 > **Update your system before installation:**
 ```bash
-sudo apt update && sudo apt upgrade -y
+> sudo apt update && sudo apt upgrade -y
 ```
 
 ```bash
 - **Operating System**: Ubuntu 24.xx  OR Ubuntu 22.xx
 - **Non-Root User**: You should be logged in as a user with `sudo` privileges.
 
-> **Note**: The script automatically installs any missing dependencies. However, ensure your system is up to date by running:
+- **Note**: The script automatically installs any missing dependencies. However, ensure your system is up to date by running:
 
 > sudo apt update && sudo apt upgrade -y
 ```
@@ -56,12 +56,13 @@ sudo apt update && sudo apt upgrade -y
 ## 📖 Usage  <a name="usage"></a>
 ```bash
 1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/aenigma-lab/erpnext-installer.git
-   cd erpnext-installer
+   
+  > git clone https://github.com/aenigma-lab/erpnext-installer.git
+  > cd erpnext-installer
 2. **Grant executable permissions**:
+```
 ```bash
-   sudo chmod +x erpnext-installer.sh
+  > sudo chmod +x erpnext-installer.sh
 ```
 
 **Run the installer**:
@@ -77,8 +78,8 @@ Do you manage **multiple custom apps**? This script lets you install and link th
 ## 🛠 How to Use
 
 ```bash
-sudo chmod +x erpnext_app_installation_script.sh
-./erpnext_app_installation_script.sh
+> sudo chmod +x erpnext_app_installation_script.sh
+> ./erpnext_app_installation_script.sh
 ```
 
 ## 📜 License  <a name="license"></a>
