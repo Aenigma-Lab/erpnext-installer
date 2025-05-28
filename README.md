@@ -48,9 +48,8 @@ sudo apt update && sudo apt upgrade -y
 - **Non-Root User**: You should be logged in as a user with `sudo` privileges.
 
 > **Note**: The script automatically installs any missing dependencies. However, ensure your system is up to date by running:
-> ```bash
+
 > sudo apt update && sudo apt upgrade -y
-> ```
 ```
 ---
 
