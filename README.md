@@ -1,4 +1,4 @@
-# 🚀 ERPNext Installer for Ubuntu 24.xx
+# 🚀 ERPNext Installer for 🐧 Ubuntu 22.xx / 24.xx
 
 A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.xx** or **Ubuntu 22.xx**. This script handles everything — from system dependencies to setting up your ERPNext site — with minimal manual steps.
 
