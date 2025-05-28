@@ -6,11 +6,11 @@ A streamlined, automated shell script to install **ERPNext v15** on **Ubuntu 24.
 
 ## 📚 Table of Contents
 
-1. [✨ Features](#-features)
-2. [✅ Requirements](#-requirements)
-3. [📖 Usage](#-usage)
-4. [🧩 ERPNext Multi-App Installer](#-erpnext-multi-app-installer)
-5. [📜 License](#-license)
+1. ✨ [Features](#-features)
+2. ✅ [Requirements](#-requirements)
+3. 📖 [Usage](#-usage)
+4. 🧩 [ERPNext Multi-App Installer](#-erpnext-multi-app-installer)
+5. 📜 [License](#-license)
 
 ---
 
